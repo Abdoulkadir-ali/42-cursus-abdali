@@ -1,13 +1,14 @@
-#include <stdio.h>
+# include <stdio.h>
+# include <stdlib.h>
 
-int ft_magnitude(int power)
+int ft_magnitude(int n, int base)
 {
-    int base;
     int power;
 
     power = 0;
-    base = 10;
-    while ((n / base) > base)
+    if (n < 0)
+        n = -n;
+    while (n > base)
     {
         n = n / base;
         power++;
@@ -15,49 +16,58 @@ int ft_magnitude(int power)
     return power;
 }
 
-int ft_power(int n, int base)
+int ft_power(int n, int power)
 {
-    int base;
-    int power;
-    base = 10
-    power = base;
-    while (n > 0)
+    int orig_n;
+
+    orig_n = n;
+    if (power == 0)
+        return 1;
+    while (power > 1)
     {
-        n = n/base;
-        power = power*base;
+        n *= orig_n;
+        power--;
     }
-    return power;
+    return n;
 }
 
 char *ft_itoa(int n)
 {
-    int base;
-    int current;
     char *str;
+    int magnitude;
+    int len;
 
-    base = 10
-    i = 0;
-    str = (char*)malloc(sizeof(char)*(ft_magnitude(n)+1));
+    if (n < 0)
+    {
+        len = ft_magnitude(n, 10)+3;
+        n = -n;
+    }
+    else
+        len = ft_magnitude(n, 10)+2;
+    str = (char*)malloc(sizeof(char)*(len));
     if (!str)
         return 0;
-    current = n;
-    while (current > 0)
+    str[len-1] = '\0';
+    while (n > 0)
     {
-        n = n / base
-        if (n < base)
-        {
-            str[i] = n + '0';
-            current = current % ft_power(original_n, base);
-            n = current;
-            i++;
-        }
+        magnitude = ft_power(10, (ft_magnitude(n, 10)));
+        magnitude = magnitude * (n / magnitude);
+        if (n > 10)
+            str[len-2] = (n % magnitude) + '0';
+        else
+            str[len-2] = n + '0';
+        n = n / 10;
+        len--;
     }
-    str[i] = '\0';
-    printf("Result : %s",str);
+    if (str[0] == 0)
+        str[0] = '-';
     return str;
 }
 
 int main(int argc, char **argv)
 {
-    if argc == 
+    int n;
+
+    n = -59;
+    printf("%d is '%s' in ascii\n",n, ft_itoa(n));
 }
