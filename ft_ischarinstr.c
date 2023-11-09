@@ -1,6 +1,6 @@
 # include "libft.h"
 
-int ft_charinstr(char *str, char c)
+int ft_ischarinstr(char *str, char c)
 {
     size_t  i;
 

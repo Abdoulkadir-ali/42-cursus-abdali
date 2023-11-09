@@ -1,55 +1,4 @@
-# include <stdio.h>
-# include <stdlib.h>
-
-void ft_bzero(void *s, size_t n)
-{
-    size_t i;
-
-    if (s)
-    {
-        i = 0;
-        while (i < n)
-        {
-            *(char*)(s + i) = 0;
-            i++;
-        }
-    }
-}
-
-int ft_strlen(const char *str)
-{
-    int i;
-
-    i = 0;
-    while (str[i])
-        i++;
-    return i;
-}
-
-void * ft_calloc(size_t len, size_t element_size)
-{
-    void * ptr;
-
-    ptr = (void*)malloc(len * element_size);;
-    if (!ptr)
-        return NULL;
-    ft_bzero(ptr,len);
-    return (ptr);
-}
-
-int ft_charinstr(char c, char *str)
-{
-    size_t  i;
-
-    i = 0;
-    while (str[i])
-    {
-        if (c == str[i])
-            return 1;
-        i++;
-    }
-    return 0;
-}
+# include "libft.h"
 
 size_t ft_occurrences_str(char *str, char *sep)
 {
@@ -60,9 +9,9 @@ size_t ft_occurrences_str(char *str, char *sep)
     count = 0;
     while (str && str[i])
     {
-        if (ft_charinstr(str[i], sep))
+        if (ft_ischarinstr(str[i], sep))
         {
-            while(ft_charinstr(str[i], sep))
+            while(ft_ischarinstr(str[i], sep))
                 i++;
             count += 1;
         }
@@ -82,9 +31,9 @@ size_t ft_len_occurences_str(char *str, char *sep, size_t occurence_index)
     occurence_len = 0;
     while (str[i])
     {
-        if (ft_charinstr(str[i], sep))
+        if (ft_ischarinstr(str[i], sep))
         {
-            while(ft_charinstr(str[i], sep))
+            while(ft_ischarinstr(str[i], sep))
                 i++;
             occurence +=1;
         }    
@@ -128,18 +77,19 @@ char **ft_split(char *str, char *sep)
     while (splitted[i++] && str[y])
     {
         j = 0;
-        while (ft_charinstr(str[y++], sep)==0 && str[y])
+        while (ft_ischarinstr(str[y], sep)==0 && str[y])
         {
-            splitted[i-1][j] = str[y-1];
+            splitted[i-1][j] = str[y++];
             j++;
         }
         splitted[i-1][j] = '\0';
-        while (ft_charinstr(str[y], sep) && str[y])
+        while (ft_ischarinstr(str[y], sep) && str[y])
             y++;
     }
     return splitted;
 }
 
+/*
 int main()
 {
     size_t i = 0;
@@ -150,3 +100,4 @@ int main()
         printf("%s\n",splitted[i-1]);
     return 0;
 }
+*/

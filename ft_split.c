@@ -1,5 +1,8 @@
-# include <stdio.h>
-# include <stdlib.h>
+/*
+Solution 2 : (Je vérifie, puis j'éxécute)
+Je parcoure la string, et je vérifie combien d'espace je vais avoir besoin
+*/
+# include "libft.h"
 
 size_t ft_occurences(char *str, char sep)
 {
