@@ -1,8 +1,8 @@
 # include "libft.h"
 
-char    *ft_alloc_str(int n)
+char    *ft_alloc_str(size_t n)
 {
-    int len;
+    size_t len;
     int neg;
 
     neg = 0;
@@ -22,7 +22,7 @@ char    *ft_alloc_str(int n)
 char *ft_itoa(int n)
 {
     char *str;
-    int len;
+    size_t len;
 
     str = ft_alloc_str(n);
     if (!str)

@@ -1,10 +1,10 @@
 #include "libft.h"
 
-void	ft_rev_int_tab(int *tab, int size)
+void	ft_rev_int_tab(int *tab, size_t size)
 {
-	int		i;
-	int		ri;
-	int		swap;
+	size_t	i;
+	size_t	ri;
+	size_t	swap;
 
 	i = 0;
 	ri = size - 1;
