@@ -1,6 +1,4 @@
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
+# include "libft.h"
 
 int ft_occurences(char *s1, char c)
 {
@@ -14,9 +12,7 @@ int ft_occurences(char *s1, char c)
         if (s1[i] == c)
         {
             while(s1[i]==c)
-            {
                 i++;
-            }
             count += 1;
         }
         i++;
@@ -39,7 +35,7 @@ int ft_len_occurences(char *str, char c, int occurence_index)
         {
             while (str[i] == c)
                 i++;
-        occurence +=1;
+            occurence +=1;
         }    
         if (occurence == occurence_index)
             occurence_len += 1;
@@ -48,19 +44,6 @@ int ft_len_occurences(char *str, char c, int occurence_index)
     return (occurence_len);
 }
 
-void ft_strlcpy(char *src, char *dst, int len)
-{
-    int i;
-    i = 0;
-    while (i < len)
-    {
-        dst[i] = src[i];
-        i++;
-    }
-    dst[i] = '\0';
-}
-
-#include <stdio.h>
 char **ft_split(char *str, char c)
 {
     char **splitted;
@@ -95,39 +78,4 @@ char **ft_split(char *str, char c)
         i++;
     }
     return splitted;
-}
-
-void    ft_putchar(char c)
-{
-    write(1,&c,1);
-}
-
-void    ft_putstr(char *str)
-{
-    int i;
-
-    i = 0;
-    if (str)
-    {
-        while (str[i])
-        {
-            ft_putchar(str[i]);
-            i++;
-        }
-    }
-}
-
-int main(int argc, char **argv)
-{
-    char **ptr;
-    int i;
-
-    ptr = ft_split(argv[1], argv[2][0]);
-    while (ptr[i])
-    {
-        ft_putstr(ptr[i]);
-        ft_putchar('\n');
-        i++;
-    }
-    return 0;
 }
